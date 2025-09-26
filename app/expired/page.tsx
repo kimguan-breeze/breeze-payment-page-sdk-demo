@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import router from "next/router";
 
 export default function Expired() {
-  const router = useRouter();
-
   return (
     <main className="container mx-auto px-4 py-16">
       <Card className="max-w-lg mx-auto bg-card border-border">

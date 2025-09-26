@@ -10,7 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
 import { useRouter } from "next/navigation";
-import { addToPaymentHistory } from "@/api/payment-history";
+import { addToPaymentHistory } from "@/app/payment-history";
+import { useEffect, useState } from "react";
 
 function ProductImage() {
   return (
@@ -87,13 +88,28 @@ function ProductInfo() {
 
 function PaymentSection() {
   const router = useRouter();
-  const pageId = "page_29a877cb7c859f33";
-  const clientSecret = "pcs_dab27b9330071902349f1f532afa3eccf6cf33b2";
+  const [paymentPage, setPaymentPage] = useState<{
+    pageId: string;
+    clientSecret: string;
+  }>();
+
+  useEffect(() => {
+    const createPaymentPage = async () => {
+      const res = await fetch("/api/payment_page", {
+        method: "POST",
+      });
+      const data = await res.json();
+      setPaymentPage({ pageId: data.id, clientSecret: data.clientSecret });
+    };
+    createPaymentPage();
+  }, []);
+
+  if (!paymentPage) return null;
 
   const handlePaymentStatusChange = (status: PaymentPageStatus) => {
     switch (status) {
       case "PAID":
-        addToPaymentHistory(pageId);
+        addToPaymentHistory(paymentPage.pageId);
         router.push("/success");
         break;
       case "EXPIRED":
@@ -117,8 +133,8 @@ function PaymentSection() {
       <CardContent>
         <div className="border border-border rounded-lg overflow-hidden bg-background h-[100vh]">
           <BreezePaymentPage
-            pageId={pageId}
-            clientSecret={clientSecret}
+            pageId={paymentPage.pageId}
+            clientSecret={paymentPage.clientSecret}
             style={{
               width: "100%",
               height: "100%",

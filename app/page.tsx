@@ -1,8 +1,7 @@
 "use client";
 
-import { getPaymentHistory } from "@/api/payment-history";
+import { getPaymentHistory } from "@/app/payment-history";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
 const PaymentHistory = () => {
