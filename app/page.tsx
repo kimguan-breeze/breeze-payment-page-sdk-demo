@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const PaymentHistory = () => {
   const paymentHistory = getPaymentHistory();
+
   return (
     <div className="space-y-4 mt-4">
       {paymentHistory?.split(",").map((pageId, index) => (
@@ -34,11 +35,11 @@ export default function Home() {
         <h1 className="text-5xl font-bold tracking-tight">
           Premium Wireless Headphones
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <div className="text-xl text-muted-foreground">
           Experience unparalleled sound quality with our flagship wireless
           headphones. Active noise cancellation, premium build, and exceptional
           comfort.
-        </p>
+        </div>
         <div className="flex justify-center gap-4">
           <Link href="/buy">
             <Button size="lg" className="cursor-pointer">
