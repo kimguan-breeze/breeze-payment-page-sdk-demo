@@ -9,8 +9,6 @@ export async function POST(request: Request) {
     successReturnUrl: "https://www.breeze.cash",
   };
 
-  console.log(process.env.BREEZE_SANDBOX_API_KEY);
-
   const res = await fetch("https://api.qa.breeze.cash/v1/payment_pages", {
     method: "POST",
     headers: {
