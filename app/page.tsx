@@ -1,5 +1,55 @@
-import { ProductPage } from "@/components/product-page"
+"use client";
+
+import { getPaymentHistory } from "@/api/payment-history";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+
+const PaymentHistory = () => {
+  const paymentHistory = getPaymentHistory();
+  return (
+    <div className="space-y-4 mt-4">
+      {paymentHistory?.split(",").map((pageId, index) => (
+        <div
+          key={index}
+          className="flex items-center justify-between p-4 rounded-lg border"
+        >
+          <div className="flex items-center gap-4">
+            <span className="text-lg font-medium">Order #{pageId}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground bg-green-200 font-bold px-2 py-1 rounded-md">
+              Completed
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default function Home() {
-  return <ProductPage />
+  return (
+    <main className="container mx-auto px-4 py-16">
+      <div className="max-w-3xl mx-auto text-center space-y-8">
+        <h1 className="text-5xl font-bold tracking-tight">
+          Premium Wireless Headphones
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Experience unparalleled sound quality with our flagship wireless
+          headphones. Active noise cancellation, premium build, and exceptional
+          comfort.
+        </p>
+        <div className="flex justify-center gap-4">
+          <Link href="/buy">
+            <Button size="lg" className="cursor-pointer">
+              Buy Now - $299.99
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+      <PaymentHistory />
+    </main>
+  );
 }

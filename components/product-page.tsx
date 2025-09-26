@@ -9,7 +9,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
-import router from "next/router";
+import { useRouter } from "next/navigation";
+import { addToPaymentHistory } from "@/api/payment-history";
 
 function ProductImage() {
   return (
@@ -85,10 +86,14 @@ function ProductInfo() {
 }
 
 function PaymentSection() {
+  const router = useRouter();
+  const pageId = "page_29a877cb7c859f33";
+  const clientSecret = "pcs_dab27b9330071902349f1f532afa3eccf6cf33b2";
+
   const handlePaymentStatusChange = (status: PaymentPageStatus) => {
-    console.log({ status });
     switch (status) {
       case "PAID":
+        addToPaymentHistory(pageId);
         router.push("/success");
         break;
       case "EXPIRED":
@@ -112,8 +117,8 @@ function PaymentSection() {
       <CardContent>
         <div className="border border-border rounded-lg overflow-hidden bg-background h-[100vh]">
           <BreezePaymentPage
-            pageId="page_d6f4859b304737b6"
-            clientSecret="pcs_ad8a35698e0d3ea5abe95d9e2e9d18c64c981ae6"
+            pageId={pageId}
+            clientSecret={clientSecret}
             style={{
               width: "100%",
               height: "100%",
