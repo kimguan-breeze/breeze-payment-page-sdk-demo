@@ -22,12 +22,3 @@ This example demonstrates how to integrate Breeze Payment Pages into a Next.js a
    npm run dev
    ```
 7. Open http://localhost:3000 to view the demo
-
-## Features
-
-- Next.js 14 App Router
-- TypeScript
-- Tailwind CSS
-- Breeze Payment Pages integration
-- Order history tracking
-- Responsive product page design
