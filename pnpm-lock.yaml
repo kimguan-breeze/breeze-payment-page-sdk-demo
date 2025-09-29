@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@breeze.cash/ui':
-        specifier: 0.0.20
-        version: 0.0.20
+        specifier: 0.0.21
+        version: 0.0.21
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.60.0(react@18.0.0))
@@ -204,8 +204,8 @@ packages:
     resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
     engines: {node: '>=6.9.0'}
 
-  '@breeze.cash/ui@0.0.20':
-    resolution: {integrity: sha512-yEW6+NFb8aETIQNIokiZ9XXrLebutsAU87M5ZPhrh8pZRFRypdTXZf9nkf+wIvS/WOz5/raYSj+fz7Rv40lQhw==}
+  '@breeze.cash/ui@0.0.21':
+    resolution: {integrity: sha512-dEEM+U+MKp7feCnTctGGmCCCHYLtLMDECaBA9gxyUnv03UZcxPMGmofoPJbABXvEGSuXqwM7EW0+qWxdND40Ew==}
 
   '@date-fns/tz@1.2.0':
     resolution: {integrity: sha512-LBrd7MiJZ9McsOgxqWX7AaxrDjcFVjWH/tIKJd7pnR7McaslGYOP1QmmiBXdJH/H/yLCT+rcQ7FaPBUxRGUtrg==}
@@ -1639,7 +1639,7 @@ snapshots:
 
   '@babel/runtime@7.28.4': {}
 
-  '@breeze.cash/ui@0.0.20': {}
+  '@breeze.cash/ui@0.0.21': {}
 
   '@date-fns/tz@1.2.0': {}
 
