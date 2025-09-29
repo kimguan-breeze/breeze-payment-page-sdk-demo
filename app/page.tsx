@@ -1,13 +1,12 @@
 "use client";
 
-import { getPaymentHistory } from "@/app/payment-history";
 import { PaymentHistory } from "@/components/payment-history";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-4 py-16">
+    <main className="container mx-auto px-4 py-16 min-h-screen flex flex-col justify-center">
       <div className="max-w-3xl mx-auto text-center space-y-8">
         <h1 className="text-5xl font-bold tracking-tight">
           Premium Wireless Headphones
