@@ -1,32 +1,9 @@
 "use client";
 
 import { getPaymentHistory } from "@/app/payment-history";
+import { PaymentHistory } from "@/components/payment-history";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-const PaymentHistory = () => {
-  const paymentHistory = getPaymentHistory();
-
-  return (
-    <div className="space-y-4 mt-4">
-      {paymentHistory?.split(",").map((pageId, index) => (
-        <div
-          key={index}
-          className="flex items-center justify-between p-4 rounded-lg border"
-        >
-          <div className="flex items-center gap-4">
-            <span className="text-lg font-medium">Order #{pageId}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground bg-green-200 font-bold px-2 py-1 rounded-md">
-              Completed
-            </span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
 
 export default function Home() {
   return (
