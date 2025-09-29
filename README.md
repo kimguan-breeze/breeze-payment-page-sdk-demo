@@ -2,6 +2,9 @@
 
 Demo : https://breeze-payment-page-demo.vercel.app/
 
+<img width="1298" height="935" alt="image" src="https://github.com/user-attachments/assets/a664d54c-44fb-4508-ae19-bab6789c31ec" />
+
+
 This example demonstrates how to integrate Breeze Payment Pages into a Next.js application.
 
 ## Getting Started
