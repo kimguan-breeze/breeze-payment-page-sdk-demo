@@ -98,7 +98,9 @@ function PaymentSection() {
 
   useEffect(() => {
     if (isIframe) {
-      const iframe = document.querySelector("iframe");
+      const iframe = document.getElementById(
+        "breeze-payment-page"
+      ) as HTMLIFrameElement;
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage(
           {
@@ -155,6 +157,7 @@ function PaymentSection() {
         <div className="border border-border rounded-lg overflow-hidden bg-background h-[100vh]">
           {isIframe ? (
             <iframe
+              id="breeze-payment-page"
               src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               className="w-full h-full"
               allow="payment *"
