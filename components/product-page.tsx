@@ -9,7 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { addToPaymentHistory } from "@/app/payment-history";
 import { useEffect, useState } from "react";
 
@@ -93,6 +93,27 @@ function PaymentSection() {
     clientSecret: string;
   }>();
 
+  const params = useParams();
+  const isIframe = params?.iframe === "true";
+
+  useEffect(() => {
+    if (isIframe) {
+      const iframe = document.querySelector("iframe");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(
+          {
+            type: "request-global-config",
+            config: {
+              applePayEnabled: true,
+              crossDomainName: location.host,
+            },
+          },
+          "*"
+        );
+      }
+    }
+  }, [isIframe]);
+
   useEffect(() => {
     const createPaymentPage = async () => {
       const res = await fetch("/api/payment_page", {
@@ -132,16 +153,24 @@ function PaymentSection() {
       </CardHeader>
       <CardContent>
         <div className="border border-border rounded-lg overflow-hidden bg-background h-[100vh]">
-          <BreezePaymentPage
-            pageId={paymentPage.pageId}
-            clientSecret={paymentPage.clientSecret}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            sandbox
-            onPaymentStatusChange={handlePaymentStatusChange}
-          />
+          {isIframe ? (
+            <iframe
+              src={`https://pay.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
+              className="w-full h-full"
+              allow="payment *"
+            />
+          ) : (
+            <BreezePaymentPage
+              pageId={paymentPage.pageId}
+              clientSecret={paymentPage.clientSecret}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              sandbox
+              onPaymentStatusChange={handlePaymentStatusChange}
+            />
+          )}
         </div>
       </CardContent>
     </Card>
