@@ -9,7 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { addToPaymentHistory } from "@/app/payment-history";
 import { useEffect, useState } from "react";
 
@@ -93,8 +93,8 @@ function PaymentSection() {
     clientSecret: string;
   }>();
 
-  const params = useParams();
-  const isIframe = params?.iframe === "true";
+  const params = useSearchParams();
+  const isIframe = params?.get("iframe") === "true";
 
   useEffect(() => {
     if (isIframe) {
