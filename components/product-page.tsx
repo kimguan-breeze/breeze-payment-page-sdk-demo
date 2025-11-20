@@ -155,7 +155,7 @@ function PaymentSection() {
         <div className="border border-border rounded-lg overflow-hidden bg-background h-[100vh]">
           {isIframe ? (
             <iframe
-              src={`https://pay.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
+              src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               className="w-full h-full"
               allow="payment *"
             />
