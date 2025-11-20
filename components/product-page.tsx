@@ -96,35 +96,29 @@ function PaymentSection() {
   const params = useSearchParams();
   const isIframe = params?.get("iframe") === "true";
 
-  const handleIFrameRequest = useCallback(
-    async (event: MessageEvent) => {
-      if (event.data.type === "request-global-config") {
-        const iframe = document.querySelector("iframe");
-        if (iframe && iframe.contentWindow) {
-          iframe.contentWindow.postMessage(
-            {
-              type: "request-global-config",
-              config: {
-                applePayEnabled: true,
-                crossDomainName: location.host,
-              },
+  const handleIFrameRequest = useCallback(() => {
+    if (isIframe) {
+      const iframe = document.getElementById(
+        "breeze-payment-page"
+      ) as HTMLIFrameElement;
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(
+          {
+            type: "request-global-config",
+            config: {
+              applePayEnabled: true,
+              crossDomainName: location.host,
             },
-            "*"
-          );
-        }
+          },
+          "*"
+        );
       }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+    }
+  }, [isIframe]);
 
   useEffect(() => {
     window.addEventListener("message", handleIFrameRequest);
-
-    return () => {
-      window.removeEventListener("message", handleIFrameRequest);
-    };
-  }, [handleIFrameRequest]);
+  }, []);
 
   useEffect(() => {
     const createPaymentPage = async () => {
@@ -168,7 +162,8 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
-              src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
+              // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
+              src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
               allow="payment *"
             />
