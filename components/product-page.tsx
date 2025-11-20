@@ -96,6 +96,10 @@ function PaymentSection() {
   const params = useSearchParams();
   const isIframe = params?.get("iframe") === "true";
 
+  const iframe = document.getElementById(
+    "breeze-payment-page"
+  ) as HTMLIFrameElement;
+
   useEffect(() => {
     if (isIframe) {
       const iframe = document.getElementById(
@@ -114,7 +118,7 @@ function PaymentSection() {
         );
       }
     }
-  }, [isIframe]);
+  }, [isIframe, iframe]);
 
   useEffect(() => {
     const createPaymentPage = async () => {
