@@ -11,7 +11,7 @@ import { Star } from "lucide-react";
 import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { addToPaymentHistory } from "@/app/payment-history";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 function ProductImage() {
   return (
@@ -186,7 +186,9 @@ export function ProductPage() {
           <ProductInfo />
         </div>
         <div className="space-y-6">
-          <PaymentSection />
+          <Suspense>
+            <PaymentSection />
+          </Suspense>
         </div>
       </div>
     </main>
