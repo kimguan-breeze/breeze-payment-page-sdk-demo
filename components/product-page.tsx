@@ -165,7 +165,7 @@ function PaymentSection() {
               // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
-              allow="payment *"
+              allow="payment pay.breeze.cash"
             />
           ) : (
             <BreezePaymentPage
