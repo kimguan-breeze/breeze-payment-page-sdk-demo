@@ -169,7 +169,7 @@ function PaymentSection() {
             />
           ) : (
             <>
-              <iframe />
+              <iframe style={{ display: "none" }} />
               <BreezePaymentPage
                 pageId={paymentPage.pageId}
                 clientSecret={paymentPage.clientSecret}
