@@ -168,16 +168,19 @@ function PaymentSection() {
               allow="payment pay.breeze.cash"
             />
           ) : (
-            <BreezePaymentPage
-              pageId={paymentPage.pageId}
-              clientSecret={paymentPage.clientSecret}
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-              sandbox
-              onPaymentStatusChange={handlePaymentStatusChange}
-            />
+            <>
+              <iframe />
+              <BreezePaymentPage
+                pageId={paymentPage.pageId}
+                clientSecret={paymentPage.clientSecret}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                sandbox
+                onPaymentStatusChange={handlePaymentStatusChange}
+              />
+            </>
           )}
         </div>
       </CardContent>
