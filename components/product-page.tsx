@@ -162,8 +162,9 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
+              src="https://pay2.qa.breeze.cash/page_c269a19bab542fe6/pcs_67f29da3e030b31636542b1f455fc5574f909c1f/desktop"
               // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
-              src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
+              // src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
               allow="payment pay.breeze.cash"
             />
