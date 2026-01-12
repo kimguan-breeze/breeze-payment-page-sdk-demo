@@ -8,7 +8,11 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
-import { BreezePaymentPage, PaymentPageStatus } from "@breeze.cash/ui";
+import {
+  BreezePaymentPage,
+  PaymentPageEvent,
+  PaymentPageStatus,
+} from "@breeze.cash/ui";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { addToPaymentHistory } from "@/app/payment-history";
 import { Suspense, useCallback, useEffect, useState } from "react";
@@ -116,6 +120,10 @@ function PaymentSection() {
     }
   }, [isIframe]);
 
+  const handlePaymentEvent = (event: PaymentPageEvent) => {
+    console.log("Payment event:", event);
+  };
+
   useEffect(() => {
     window.addEventListener("message", handleIFrameRequest);
   }, []);
@@ -180,6 +188,7 @@ function PaymentSection() {
                 }}
                 sandbox
                 onPaymentStatusChange={handlePaymentStatusChange}
+                onPaymentEvent={handlePaymentEvent}
               />
             </>
           )}
