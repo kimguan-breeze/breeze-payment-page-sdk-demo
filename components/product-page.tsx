@@ -170,7 +170,7 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
-              src="https://pay2.qa.breeze.cash/page_d63454d188b264af/pcs_242d8cafac745c3ee967680ec29d55bdb8f6fb42/android"
+              src="https://pay2.qa.breeze.cash/page_27f37a21fc7e8d1a/pcs_7ae3145dfa60eef7f843560bd0c2e16f8af180cf/desktop?cross_domain_name=pay2.qa.breeze.cash"
               // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               // src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
