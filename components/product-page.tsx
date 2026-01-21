@@ -170,7 +170,7 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
-              src="https://pay2.qa.breeze.cash/page_e8c27801ac4049b0/pcs_542b7383d9422cdd1e9679da0eb278c45ec808cf/desktop?cross_domain_name=test-repo-pied-eight.vercel.app"
+              src="https://pay2.qa.breeze.cash/page_e8c27801ac4049b0/pcs_542b7383d9422cdd1e9679da0eb278c45ec808cf/desktop?cross_domain_name=pay2.qa.breeze.cash"
               // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               // src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
