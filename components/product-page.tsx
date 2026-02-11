@@ -103,7 +103,7 @@ function PaymentSection() {
   const handleIFrameRequest = useCallback(() => {
     if (isIframe) {
       const iframe = document.getElementById(
-        "breeze-payment-page"
+        "breeze-payment-page",
       ) as HTMLIFrameElement;
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage(
@@ -114,7 +114,7 @@ function PaymentSection() {
               crossDomainName: location.host,
             },
           },
-          "*"
+          "*",
         );
       }
     }
@@ -170,7 +170,7 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
-              src="https://pay2.qa.breeze.cash/page_0c595137091fa007/pcs_e76dbee39ec4cb96d229d76c52332e3eb777dda1/desktop?cross_domain_name=pay2.qa.breeze.cash"
+              src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}/desktop?cross_domain_name=breeze-payment-page-demo.vercel.app`}
               // src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}`}
               // src="https://api.breeze.cash/v1/invoices/client/invc_551b067467b8a141"
               className="w-full h-full"
