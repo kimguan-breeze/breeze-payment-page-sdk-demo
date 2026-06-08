@@ -170,7 +170,7 @@ function PaymentSection() {
           {isIframe ? (
             <iframe
               id="breeze-payment-page"
-              src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}/web?cross_domain_name=breeze-payment-page-demo.vercel.app`}
+              src={`https://payout.qa.breeze.cash/payout-page/payout_page_8f2f18c7bfb315af`}
               className="w-full h-[100dvh]"
               allow="payment *"
             />
