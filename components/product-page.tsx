@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import {
   BreezePaymentPage,
-  PaymentPageEvent,
+  // PaymentPageEvent,
   PaymentPageStatus,
 } from "@breeze.cash/ui";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -120,9 +120,9 @@ function PaymentSection() {
     }
   }, [isIframe]);
 
-  const handlePaymentEvent = (event: PaymentPageEvent) => {
-    console.log("Payment event:", event);
-  };
+  // const handlePaymentEvent = (event: PaymentPageEvent) => {
+  //     console.log("Payment event:", event);
+  //   };
 
   useEffect(() => {
     // window.addEventListener("message", handleIFrameRequest);
@@ -171,22 +171,21 @@ function PaymentSection() {
             <iframe
               id="breeze-payment-page"
               src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}/web?cross_domain_name=breeze-payment-page-demo.vercel.app`}
-              className="w-full h-full"
+              className="w-full h-[100dvh]"
               allow="payment *"
             />
           ) : (
             <>
               <iframe style={{ display: "none" }} />
               <BreezePaymentPage
-                pageId={paymentPage.pageId}
-                clientSecret={paymentPage.clientSecret}
+                pageId={"page_852ef522f07d667f"}
+                clientSecret={"pcs_10460b0cb37bdf403e74c90dc21ead18f519f920"}
                 style={{
                   width: "100%",
                   height: "100%",
                 }}
-                sandbox
                 onPaymentStatusChange={handlePaymentStatusChange}
-                onPaymentEvent={handlePaymentEvent}
+                // onPaymentEvent={handlePaymentEvent}
               />
             </>
           )}
