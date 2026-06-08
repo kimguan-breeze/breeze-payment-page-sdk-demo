@@ -178,8 +178,8 @@ function PaymentSection() {
             <>
               <iframe style={{ display: "none" }} />
               <BreezePaymentPage
-                pageId={"page_852ef522f07d667f"}
-                clientSecret={"pcs_10460b0cb37bdf403e74c90dc21ead18f519f920"}
+                pageId={paymentPage.pageId}
+                clientSecret={paymentPage.clientSecret}
                 style={{
                   width: "100%",
                   height: "100%",
