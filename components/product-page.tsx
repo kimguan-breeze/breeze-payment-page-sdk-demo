@@ -172,12 +172,13 @@ function PaymentSection() {
               id="breeze-payment-page"
               src={`https://pay.qa.breeze.cash/${paymentPage.pageId}/${paymentPage.clientSecret}/web?cross_domain_name=breeze-payment-page-demo.vercel.app`}
               className="w-full h-[100dvh]"
-              allow="payment *"
+              // allow="payment *"
             />
           ) : (
             <>
               <iframe style={{ display: "none" }} />
               <BreezePaymentPage
+                sandbox
                 pageId={paymentPage.pageId}
                 clientSecret={paymentPage.clientSecret}
                 style={{
